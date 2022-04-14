@@ -14,6 +14,7 @@ import (
 	"unsafe"
 )
 
+// Run string command and get c output
 func RunString(command string) int {
 	commandName := C.CString(command)
 	defer C.free(unsafe.Pointer(commandName))
@@ -22,6 +23,7 @@ func RunString(command string) int {
 	return int(commandReturn)
 }
 
+// Run string slice commands and get c output
 func RunStringSlice(command []string) int {
 	commandName := C.CString(strings.Join(command, " "))
 	defer C.free(unsafe.Pointer(commandName))
