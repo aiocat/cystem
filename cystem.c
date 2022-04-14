@@ -5,6 +5,8 @@
  * https://opensource.org/licenses/MIT
  */
 
+#include "cystem.h"
+
 int cystem(const char* command) {
     return system(command);
 }
