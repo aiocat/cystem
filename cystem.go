@@ -10,11 +10,20 @@ package cystem
 // #include "cystem.h"
 import "C"
 import (
+	"strings"
 	"unsafe"
 )
 
-func Run(command string) int {
+func RunString(command string) int {
 	commandName := C.CString(command)
+	defer C.free(unsafe.Pointer(commandName))
+
+	commandReturn := C.cystem(commandName)
+	return int(commandReturn)
+}
+
+func RunStringSlice(command []string) int {
+	commandName := C.CString(strings.Join(command, " "))
 	defer C.free(unsafe.Pointer(commandName))
 
 	commandReturn := C.cystem(commandName)

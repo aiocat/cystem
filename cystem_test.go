@@ -7,6 +7,14 @@ package cystem
 
 import "testing"
 
-func TestRun(t *testing.T) {
-	Run("echo Deneme")
+func TestRunString(t *testing.T) {
+	RunString("echo Test")
+}
+
+func TestRunStringSlice(t *testing.T) {
+	RunStringSlice([]string{
+		"echo",
+		"Test",
+		"Output",
+	})
 }
